@@ -2,19 +2,19 @@ name: Snowflake Test
 on:
   push:
     branches:
-       -main
+      - main
 
 jobs:
   test:
      runs-on: ubuntu-latest
 
      steps:
-       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-       - uses: snowflakedb/snowflake-actions@v3
+      - uses: snowflakedb/snowflake-actions@v3
 
-       - name:Check Snowflake CLI
-         run: snow  --version        
+      - name: Check Snowflake CLI
+        run: snow  --version        
 
   
 
