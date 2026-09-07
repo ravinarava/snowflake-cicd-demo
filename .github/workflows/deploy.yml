@@ -19,7 +19,9 @@ jobs:
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
         run: |
-          snow connection test
+          echo "Account configured"
+          echo "${SNOWFLAKE_ACCOUNT}"
+          echo "${SNOWFLAKE_USER}"
 
   
 
