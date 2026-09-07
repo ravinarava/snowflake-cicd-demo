@@ -26,4 +26,4 @@ jobs:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: GITHUB_OIDC_SVC
         run: |
-          snow connection test -x
+          snow sql -q "SELECT CURRENT_USER(), CURRENT_ROLE()" -x
