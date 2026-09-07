@@ -28,14 +28,13 @@ jobs:
           user = "${SNOWFLAKE_USER}"
           password = "${SNOWFLAKE_PASSWORD}"
           warehouse = "COMPUTE_WH"
-          database = "USER$RNARAVA"
           schema = "PUBLIC"
           role = "ACCOUNTADMIN"
           EOF
           chmod 600 ~/.snowflake/config.toml 
 
-      - name: Test Connection
-        run: snow connection test
-
+      - name: Run SQL
+        run: |
+          snow sql -q "SELECT CURRENT_VERSION();"
   
 
