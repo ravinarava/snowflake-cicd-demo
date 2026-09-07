@@ -28,7 +28,7 @@ jobs:
           user = "${SNOWFLAKE_USER}"
           password = "${SNOWFLAKE_PASSWORD}"
           warehouse = "COMPUTE_WH"
-          database = "USERSRNARAVA"
+          database = "USER$RNARAVA"
           schema = "PUBLIC"
           role = "ACCOUNTADMIN"
           EOF
