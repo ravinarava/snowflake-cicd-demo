@@ -13,15 +13,28 @@ jobs:
 
       - uses: snowflakedb/snowflake-actions@v3
         
-      - name: Test Snowflake Connection
+      - name: Create Snowflake Config
+        run: |
+          mkdir -p ~/.snowflake
+          cat > ~/.snowflake/config.toml << EOF
+          default_connection_name = "default"
+
+          [connections.default]
+          account = "${SNOWFLAKE_ACCOUNT}"
+          user = "${SNOWFLAKE_USER}"
+          password = "${SNOWFLAKE_PASSWORD}"
+          warehouse = "COMPUTE_WH"
+          database = "USERSRNARAVA"
+          schema = "PUBLIC"
+          role = "ACCOUNTADMIN"
+          EOF
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-        run: |
-          echo "Account configured"
-          echo "${SNOWFLAKE_ACCOUNT}"
-          echo "${SNOWFLAKE_USER}"
+
+      - name: Test Connection
+        run: snow connection test
 
   
 
