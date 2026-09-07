@@ -12,9 +12,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: snowflakedb/snowflake-actions@v3
-
-      - name: Check Snowflake CLI
-        run: snow  --version        
+        
+      - name: Test Snowflake Connection
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+        run: |
+          snow connection test
 
   
 
